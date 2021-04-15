@@ -27,7 +27,7 @@ def home():
     #  {'author':'Jerry', 'message':'Home. You?'}]
     list = Messages.query.all()
     for messages in list:
-        posts.append({'author':'{User.query.get(messages.user_id).author}'}, 'message':'{messages.message}'})
+        posts.append({'author':'{User.query.get(messages.user_id).author}', 'message':'{messages.message}'})
 
     return render_template('home.html', posts=posts, form=form)
 
