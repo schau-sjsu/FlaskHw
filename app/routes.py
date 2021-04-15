@@ -18,7 +18,9 @@ def home():
             db.session.add(user)
             db.session.commit()
         # create row in Message table with user (created/found) add to the database
-        message = Messages(message = form.message.data, user_id = user.id)    
+        message = Messages(message = form.message.data, user_id = user.id)
+        db.session.add(message)
+        db.session.commit()
 
     posts = []
     # output all messages
@@ -26,8 +28,8 @@ def home():
     # [{'author':'carlos', 'message':'Yo! Where you at?!'},
     #  {'author':'Jerry', 'message':'Home. You?'}]
     list = Messages.query.all()
-    for messages in list:
-        posts.append({'author':'{User.query.get(messages.user_id).author}', 'message':'{messages.message}'})
+    for m in list:
+        posts.append({'author':User.query.get(m.user_id).author, 'message':m.message})
 
     return render_template('home.html', posts=posts, form=form)
 

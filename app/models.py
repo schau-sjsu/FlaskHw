@@ -25,3 +25,6 @@ class Messages(db.Model):
     # replace MESSAGE_GOES_HERE with the message
     def __repr__(self):
         return f'<Message: {self.message}>'
+
+
+db.create_all()
