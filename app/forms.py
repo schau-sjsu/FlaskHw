@@ -3,6 +3,18 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Integ
 from wtforms.validators import DataRequired
 
 class MessageForm(FlaskForm):
+    """
+    Represent the form for a message board.
+
+    Attributes
+    ----------
+    author : StringField
+        Name of the author of the message
+    message : StringField
+        Message to be posted to the board
+    submit : SubmitField
+        Button to post the message to the message board
+    """
     # add
     # author (string) validator should make this textbox required
     author = StringField('author', validators=[DataRequired()])
