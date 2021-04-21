@@ -23,7 +23,7 @@ class User(db.Model):
     author = db.Column(db.String, nullable=False, unique=True)
 
     # message (linkd to Messages table)
-    message = db.Column(db.String, db.ForeignKey('messages.message'))
+    message = db.relationship('Messages', backref='user', lazy=True)
 
     """
     Output name of user.
